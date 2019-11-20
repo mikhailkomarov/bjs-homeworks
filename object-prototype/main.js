@@ -1,3 +1,7 @@
+'use strict'
+
+// Задача №1
+
 function initCheckBirthday() {
     const birthday = document.getElementById('birthday').value;
 
@@ -7,12 +11,20 @@ function initCheckBirthday() {
 }
 
 function checkBirthday(birthday) {
-    // код для задачи №3 писать здесь
+    let now = Date.now(new Date()); // Переменная хранящая значение текущей даты в милисекундах
+    let dateOfBirthday = +new Date(birthday); // Переменная хранящая значение даты рождения пользователя в милисекундах
+    console.log(dateOfBirthday);
+    let diff = now - dateOfBirthday; // Переменная хранящая значение разницы между текущей датой и датой рождения пользователя в милисекундах
+    let age = diff / (1000 * 60 * 60 * 24 * 365.25); // Переменная хранящая в качестве значения возраст пользователя
+    return age >= 18 ? true : false;
 }
+
+
+// Задача №2
 
 function initPrintAnimalSound() {
     const animal = {
-        sound: 'grrrr',
+        sound: 'grrrr'
     };
 
     const result = getAnimalSound(animal);
@@ -21,8 +33,12 @@ function initPrintAnimalSound() {
 }
 
 function getAnimalSound(animal) {
-    // код для задачи №1 писать здесь
+    let sound = animal.sound;
+    return sound === undefined ? null : sound;
 }
+
+
+// Задача №3
 
 function initCalculateStatement() {
     for (let idx = 0; idx < 3; idx++) {
@@ -31,9 +47,17 @@ function initCalculateStatement() {
         const average = getAverageMark(marks);
 
         document.getElementById('learner-' + idx + '-average').innerHTML = average;
-    }
+    }    
 }
 
 function getAverageMark(marks) {
-    // код для задачи №2 писать здесь
+    let arrayMarks = []; // Инициализация пустого массива
+    let roundedAverage = 0; // Переменная хранящая округленный средний балл ученика
+    let sum = 0; // Переменная хранящая сумму всех оценок
+
+    for (let i = 0; i < marks.length; i++) {
+        arrayMarks[i] = parseInt(marks[i], 10);
+        sum += arrayMarks[i];
+    }
+    return roundedAverage = Math.round(sum / arrayMarks.length);
 }
